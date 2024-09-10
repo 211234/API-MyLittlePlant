@@ -1,20 +1,15 @@
-import dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 
+// Cargar las variables de entorno desde el archivo .env
 dotenv.config();
 
-const { PORT, DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME } = process.env;
-
-if (!DB_HOST || !DB_PORT || !DB_USER || !DB_PASS || !DB_NAME) {
-    throw new Error("Missing required database environment variables");
-}
-
-export const envConfig = {
-    port: PORT || 3000,
-    db: {
-        host: DB_HOST,
-        port: DB_PORT,
-        user: DB_USER,
-        pass: DB_PASS,
-        name: DB_NAME,
-    },
+// Obtener las variables de entorno y asignarlas a una configuración
+const envConfig = {
+  port: process.env.PORT,
+  dbHost: process.env.DB_HOST,
+  dbUser: process.env.DB_USER,
+  dbPassword: process.env.DB_PASSWORD,
+  dbName: process.env.DB_NAME,
 };
+
+export { envConfig };

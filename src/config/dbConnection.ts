@@ -1,12 +1,11 @@
-import { Pool } from "pg";
+import mysql from "mysql2/promise";
 import { envConfig } from "./env.config";
 
-const pool = new Pool({
-    user: envConfig.db.user!,
-    host: envConfig.db.host!,
-    database: envConfig.db.name!,
-    password: envConfig.db.pass!,
-    port: parseInt(envConfig.db.port!),
+const pool = mysql.createPool({
+  host: envConfig.dbHost,
+  user: envConfig.dbUser,
+  password: envConfig.dbPassword,
+  database: envConfig.dbName,
 });
 
 export default pool;
